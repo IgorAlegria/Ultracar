@@ -1,32 +1,42 @@
 using Microsoft.AspNetCore.Mvc;
+using Ultracar.Repository;
+using Ultracar.DTO;
+using Ultracar.Models;
 
 namespace Ultracar.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+[Route("Order")]
+public class OrderController : Controller
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
-    {
-        _logger = logger;
-    }
-
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
-    {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+    private readonly IOrderRepository _repository;
+        public OrderController(IOrderRepository repository)
         {
-            Date = DateTime.Now.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
-    }
+            _repository = repository;
+        }
+  
+    [HttpGet]
+        public IActionResult GetOrders()
+        {
+            var response = _repository.GetOrders();
+            return Ok(response);
+        }
+
+     [HttpPost]
+        public IActionResult AddOrder([FromBody] Order order)
+        {
+        
+            OrderDTO newOrder = _repository.AddOrder(order);
+            return Created("", newOrder);
+            
+        }
+
+        [HttpPut("{OrderId}")]
+        public IActionResult PutCity(int OrderId, [FromBody] InsertProductIntoOrderDTO product)
+        {
+             var updateOrder = _repository.InsertProductsOrder(OrderId, product);
+        
+            return Ok(updateOrder);
+        
+        }
 }
