@@ -48,7 +48,7 @@ namespace Ultracar.Repository
 
         }
 
-        public Product UpdateProduct(int Orderid, int ProductId)
+        public Product UpdateStock (int Orderid, int ProductId)
         {
             try
             {

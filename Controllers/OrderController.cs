@@ -31,7 +31,7 @@ public class OrderController : Controller
             
         }
 
-        [HttpPut("{OrderId}")]
+        [HttpPut("/insert/{OrderId}")]
         public IActionResult PutCity(int OrderId, [FromBody] InsertProductIntoOrderDTO product)
         {
              var updateOrder = _repository.InsertProductsOrder(OrderId, product);

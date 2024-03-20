@@ -9,7 +9,7 @@ namespace Ultracar.Repository
 
         IEnumerable<Product> GetProducts();
 
-        public Product UpdateProduct(int Orderid, int ProductId);
+        public Product UpdateStock (int Orderid, int ProductId);
         
     }
 }
