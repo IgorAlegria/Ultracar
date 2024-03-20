@@ -1,5 +1,6 @@
 
 
+
 namespace Ultracar.DTO 
 {
     public class ProductDTO
@@ -10,8 +11,7 @@ namespace Ultracar.DTO
 
         public int Amount {get; set; }
 
-        public string Status {get; set;} = "pending";
-
+        public string? Status {get; set;}
     }
 
     public class ProductDTOInsert

@@ -1,14 +1,15 @@
 using Ultracar.Models;
+using Ultracar.DTO;
 
 namespace Ultracar.Repository
 {
     public interface IProductRepository
     {
-        Product AddProduct(Product Product);
+        public ProductDTOInsert AddProduct(Product product);
 
         IEnumerable<Product> GetProducts();
 
-        Product UpdateProduct(Product Product);
+        public Product UpdateProduct(int Orderid, int ProductId);
         
     }
 }
