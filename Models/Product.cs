@@ -12,9 +12,13 @@ namespace Ultracar.Models
 
         public int Stock { get; set; }
 
+        public int Amount { get; set; }
+
+        public string? Status {get; set; }
+
         public int OrderId { get; set; }
 
-        public ICollection<Order> Orders { get; set; } = null!;
+        public ICollection<Order>? Orders { get; set; }
     }
 
 

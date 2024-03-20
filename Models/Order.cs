@@ -2,7 +2,7 @@ namespace Ultracar.Models
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    using Ultracar.DTO;
 
     public class Order
     {
@@ -15,6 +15,6 @@ namespace Ultracar.Models
 
         public int ProductId { get; set; }
 
-        public ICollection<Product> Products { get; set; } = null!;
+        public List<ProductDTO>? Products { get; set; }
     }
 }

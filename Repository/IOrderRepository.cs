@@ -1,14 +1,15 @@
 using Ultracar.Models;
+using Ultracar.DTO;
 
 namespace Ultracar.Repository
 {
     public interface IOrderRepository
     {
-        Order AddOrder(Order order);
+        OrderDTO AddOrder(Order order);
 
         IEnumerable<Order> GetOrders();
 
-        Order UpdateOrder(Order order);
+        Order InsertProductsOrder(int OrderId, InsertProductIntoOrderDTO product);
         
     }
 }
