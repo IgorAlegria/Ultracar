@@ -1,0 +1,10 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    container_name: postgressDB
+    ports:
+        - 1433:1433
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_NAME: postgres
